@@ -30,7 +30,6 @@ export const CloudButtons = styled.ul`
     gap: 20px;
   
     li {
-        border: 1.5px solid var(--blue-500);
         padding: 10px 15px;
 
         list-style: none;
@@ -60,6 +59,7 @@ export const CloudButtons = styled.ul`
 
         &.disabled {
             background: transparent;
+            border: 1px solid var(--blue-500);
         }
     }
 `

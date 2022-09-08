@@ -17,7 +17,7 @@ export const Container = styled.form`
 
     button {
         cursor: pointer;
-        background: transparent;
+        background: var(--gray-600);
         border: none;
 
         position: absolute;

@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
-import { Definitions } from "./components/Definitions/Definitions";
+import html2canvas from "html2canvas";
+import { createRef, useEffect, useState } from "react";
 
+import { Definitions } from "./components/Definitions/Definitions";
 import { LoadingScreen } from "./components/LoadingScreen/LoadingScreen";
 import { NotFound } from "./components/NotFound/NotFound";
 import { SearchBox } from "./components/SearchBox/SearchBox";
@@ -28,6 +29,7 @@ export function App(){
     const [ wordInfo, setWordInfo ] = useState({} as WordInfo)
     const [ word, setWord ] = useState('universo')
     const [ isLoading, setIsLoading ] = useState(true)
+    const printRef = createRef<HTMLDivElement>()
 
     async function getWordInfo(word: string){
         setIsLoading(true)
@@ -44,6 +46,25 @@ export function App(){
         setIsLoading(false)
     }
 
+    async function onDownloadImage() {
+        const element = printRef.current;
+        const canvas = await html2canvas(element!, {backgroundColor:null});
+    
+        const data = canvas.toDataURL('image/png');
+        const link = document.createElement('a');
+    
+        if (typeof link.download === 'string') {
+            link.href = data;
+            link.download = `${word}.png`;
+        
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        } else {
+            window.open(data);
+        }
+    }
+
     useEffect(() => {
         getWordInfo(word)
     }, [])
@@ -58,8 +79,18 @@ export function App(){
                     { wordInfo.alternatives
                         ? <NotFound word={word} alternatives={wordInfo.alternatives} getWordInfo={getWordInfo} />
                         : <>
-                            <WordCloud getWordInfo={getWordInfo} word={word} wordInfo={wordInfo} />
-                            <Definitions word={word} wordInfo={wordInfo} />
+                            <WordCloud
+                                printRef={printRef}
+                                getWordInfo={getWordInfo}
+                                word={word}
+                                wordInfo={wordInfo}
+                            />
+
+                            <Definitions
+                                handleDownloadImage={onDownloadImage}
+                                word={word}
+                                wordInfo={wordInfo}
+                            />
                         </>
                     }
                 </Main>

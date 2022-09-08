@@ -1,6 +1,9 @@
-import { useEffect, useState } from "react"
+import { createRef, RefObject, useEffect, useState } from "react"
+import html2canvas from 'html2canvas';
+
 import { WordInfo } from "../../App"
 import { WordBubble } from "../WordBubble/WordBubble"
+
 import { CloudButtons, Container } from "./styles"
 
 interface WordCloudData {
@@ -17,6 +20,7 @@ interface WordRelationships {
 }
 
 interface WordCloudProps {
+    printRef: RefObject<HTMLDivElement>,
     getWordInfo: (name: string) => void,
     word: string,
     wordInfo: WordInfo
@@ -39,7 +43,7 @@ const inititalWordRelationships: WordRelationships = {
     }
 }
 
-export function WordCloud({ getWordInfo, word, wordInfo }: WordCloudProps) {
+export function WordCloud({ printRef, getWordInfo, word, wordInfo }: WordCloudProps) {
     const [ wordCloudData, setWordCloudData ] = useState<WordCloudData[]>([])
     const [ wordRelationships, setWordRelationships ] = useState<WordRelationships>(inititalWordRelationships)
 
@@ -88,7 +92,7 @@ export function WordCloud({ getWordInfo, word, wordInfo }: WordCloudProps) {
     }, [wordInfo])
     
     return (
-        <Container>
+        <Container ref={printRef}>
             <WordBubble data={wordCloudData} getWordInfo={getWordInfo} word={word} />
 
             <CloudButtons>

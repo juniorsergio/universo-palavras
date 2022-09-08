@@ -14,8 +14,8 @@ export function WordBubble({ data, getWordInfo, word }){
         <BubbleChart
             style={{cursor: 'pointer'}}
             graph={{
-                zoom: size.width > 920 ? 0.64 : 0.95,
-                offsetX: size.width > 920 ? 0.2 : 0.03,
+                zoom: size.width > 920 ? 0.63 : 0.95,
+                offsetX: size.width > 920 ? 0.18 : 0.03,
                 offsetY: 0
             }}
             width={size.width > 920 ? size.width * 0.5 : size.width}

@@ -1,13 +1,14 @@
 import { useState } from "react";
 import { WordInfo } from "../../App";
-import { Container, DefinitionsView, HoverDefinitions } from "./styles";
+import { Container, Title, DefinitionsView, HoverDefinitions } from "./styles";
 
 interface DefinitionsProps {
     word: string,
-    wordInfo: WordInfo
+    wordInfo: WordInfo,
+    handleDownloadImage: () => void
 }
 
-export function Definitions({ word, wordInfo }: DefinitionsProps){
+export function Definitions({ word, wordInfo, handleDownloadImage }: DefinitionsProps){
     const [ definitionHover, setDefinitionHover ] = useState('default')
     
     function handleMouseOverDefinition(def: string){
@@ -20,7 +21,13 @@ export function Definitions({ word, wordInfo }: DefinitionsProps){
 
     return (
         <Container onMouseLeave={handleMouseOutDefinition}>
-            <h1>{word}</h1>
+            <Title>
+                <h1>{word}</h1>
+            
+                <button type="button" onClick={handleDownloadImage} >
+                    Exportar
+                </button>
+            </Title>
 
             {definitionHover === 'default' &&
                 <DefinitionsView>

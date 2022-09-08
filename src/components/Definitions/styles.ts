@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
 export const Container = styled.div`
-    width: 40%;
+    width: 30%;
 
     display: flex;
     flex-direction: column;
@@ -20,6 +20,30 @@ export const Container = styled.div`
 
     p {
         text-align: justify;
+    }
+`
+export const Title = styled.div`
+    display: flex;
+    justify-content: space-around;
+
+    button {
+        border: 1px solid var(--blue-500);
+        background: var(--blue-500);
+
+        padding: 10px 15px;
+
+        color: var(--white);
+        font-size: 1rem;
+        font-weight: bold;
+
+        cursor: pointer;
+        transition: background-color 0.2s;
+
+        border-radius: 50px;
+
+        &:hover {
+            background: var(--blue-300);
+        }
     }
 `
 
@@ -41,7 +65,7 @@ export const HoverDefinitions = styled.ul`
     gap: 20px;
 
     li {
-        border: 1.5px solid var(--blue-500);
+        border: 1px solid var(--blue-500);
         background: var(--blue-500);
 
         padding: 10px 15px;
@@ -50,7 +74,7 @@ export const HoverDefinitions = styled.ul`
         text-align: center;
 
         cursor: pointer;
-        transition: all 0.2s;
+        transition: background-color 0.2s;
 
         border-radius: 50px;
 

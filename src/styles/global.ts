@@ -33,7 +33,7 @@ export const GlobalStyle = createGlobalStyle`
 `
 
 export const Container = styled.div`
-    width: 80vw;
+    width: 90vw;
     height: 100vh;
     margin: auto;
 
@@ -49,7 +49,6 @@ export const Container = styled.div`
 
 export const Main = styled.main`
     display: flex;
-    justify-content: space-between;
     flex: 1;
 
     width: 100%;
