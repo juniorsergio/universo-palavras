@@ -63,13 +63,13 @@ export function Definitions({ word, wordInfo }: DefinitionsProps){
             }
 
             <HoverDefinitions>
-                <li onMouseOver={() => handleMouseOverDefinition('quotes')}>
+                <li className={definitionHover === 'quotes' ? 'active' : ''} onMouseOver={() => handleMouseOverDefinition('quotes')}>
                     Citações
                 </li>
 
                 {wordInfo.other_defs &&
                     Object.keys(wordInfo.other_defs).map((key) => (
-                        <li key={key} onMouseOver={() => handleMouseOverDefinition(key)}>
+                        <li key={key} className={definitionHover === key ? 'active' : ''} onMouseOver={() => handleMouseOverDefinition(key)}>
                             {key}
                         </li>
                     ))

@@ -57,5 +57,9 @@ export const HoverDefinitions = styled.ul`
         &:hover {
             background: var(--blue-300);
         }
+
+        &.active {
+            background: var(--blue-300);
+        }
     }
 `
