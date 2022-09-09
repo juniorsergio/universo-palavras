@@ -93,8 +93,11 @@ export function WordCloud({ printRef, getWordInfo, word, wordInfo }: WordCloudPr
     
     return (
         <Container ref={printRef}>
-            <WordBubble data={wordCloudData} getWordInfo={getWordInfo} word={word} />
-
+            { wordCloudData.length > 0
+                ? <WordBubble data={wordCloudData} getWordInfo={getWordInfo} word={word} />
+                : <h4>Selecione os relacionamentos que você deseja visualizar abaixo:</h4>
+            }
+            
             <CloudButtons>
                 {Object.keys(wordRelationships).map((key) => {
                     if (wordInfo[key as WordCloudType] && wordInfo[key as WordCloudType]!.length > 0){
