@@ -321,7 +321,7 @@ Add a <Suspense fallback=...> component higher in the tree to provide a loading 
     }
 
     body {
-        background-image: url('/stilingue.png'), radial-gradient(var(--gray-800), black);
+        background-image: url('stilingue.png'), radial-gradient(var(--gray-800), black);
         background-size: 50vh, 100%;
         background-blend-mode: overlay;
         background-repeat: no-repeat;
