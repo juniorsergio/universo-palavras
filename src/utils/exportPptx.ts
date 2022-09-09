@@ -32,10 +32,7 @@ async function onDownloadImage(element: HTMLDivElement) {
 function createMasterSlide(pptx: pptxgen){
     pptx.defineSlideMaster({
         title: 'MASTER_SLIDE',
-        background: { color: '#202024' },
-        objects: [
-            { image: { y: '80%', transparency: 80, path: '/stilingue.png' } }
-        ]
+        background: { color: '#202024' }
     })
 }
 
