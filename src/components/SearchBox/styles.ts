@@ -22,11 +22,6 @@ export const Container = styled.form`
 
         position: absolute;
         right: 15px;
-
-        img {
-            height: 2rem;
-            width: 2rem;
-        }
     }
 `
 
@@ -45,6 +40,6 @@ export const Input = styled.input`
 
     &:focus {
         outline: transparent;
-        box-shadow: 0 0 0 2px var(--blue-300);
+        box-shadow: 0 0 0 2px var(--blue-light);
     }
 `

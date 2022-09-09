@@ -46,20 +46,20 @@ export const CloudButtons = styled.ul`
         }
 
         &.related {
-            background: var(--blue-300);
+            background: var(--blue-light);
         }
 
         &.synonyms {
-            background: var(--green-300);
+            background: var(--green);
         }
 
         &.antonyms {
-            background: var(--red-300);
+            background: var(--red);
         }
 
         &.disabled {
             background: transparent;
-            border: 1px solid var(--blue-500);
+            border: 1px solid var(--blue-dark);
         }
     }
 `

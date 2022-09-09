@@ -6,11 +6,12 @@ export const GlobalStyle = createGlobalStyle`
         --gray-600: #323238;
         --gray-800: #202024;
     
-        --blue-300: #00BDAF;
-        --blue-500: #142C5A;
+        --blue-light: #00BDAF;
+        --blue-dark: #142C5A;
 
-        --green-300: #14c061;
-        --red-300: #F75A68;
+        --green: #14c061;
+        --red: #F75A68;
+        --orange: #D14524;
     }
     
     * {  
@@ -20,7 +21,8 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     body {
-        background-image: url('background.png'), radial-gradient(var(--gray-800), black);
+        background-image: url('stilingue.png'), radial-gradient(var(--gray-800), black);
+        background-size: 50vh, 100%;
         background-blend-mode: overlay;
         background-repeat: no-repeat;
         background-attachment: fixed;
@@ -53,6 +55,17 @@ export const Main = styled.main`
 
     width: 100%;
     margin-bottom: 20px;
+
+    animation: fadein 2s;
+
+    @keyframes fadein {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
 
     @media (max-width: 920px) {
         flex-direction: column;

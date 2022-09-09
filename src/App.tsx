@@ -1,4 +1,3 @@
-import html2canvas from "html2canvas";
 import { createRef, useEffect, useState } from "react";
 
 import { Definitions } from "./components/Definitions/Definitions";
@@ -8,6 +7,7 @@ import { SearchBox } from "./components/SearchBox/SearchBox";
 import { WordCloud } from "./components/WordCloud/WordCloud";
 
 import { GlobalStyle, Container, Main } from "./styles/global";
+import { exportPptx } from "./utils/exportPptx";
 
 export interface WordInfo {
     alternatives?: string[]
@@ -46,25 +46,6 @@ export function App(){
         setIsLoading(false)
     }
 
-    async function onDownloadImage() {
-        const element = printRef.current;
-        const canvas = await html2canvas(element!, {backgroundColor:null});
-    
-        const data = canvas.toDataURL('image/png');
-        const link = document.createElement('a');
-    
-        if (typeof link.download === 'string') {
-            link.href = data;
-            link.download = `${word}.png`;
-        
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-        } else {
-            window.open(data);
-        }
-    }
-
     useEffect(() => {
         getWordInfo(word)
     }, [])
@@ -87,7 +68,7 @@ export function App(){
                             />
 
                             <Definitions
-                                handleDownloadImage={onDownloadImage}
+                                handleExportPptx={() => exportPptx(printRef, word)}
                                 word={word}
                                 wordInfo={wordInfo}
                             />

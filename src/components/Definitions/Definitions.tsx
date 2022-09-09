@@ -1,3 +1,4 @@
+import { MicrosoftPowerpointLogo } from "phosphor-react";
 import { useState } from "react";
 import { WordInfo } from "../../App";
 import { Container, Title, DefinitionsView, HoverDefinitions } from "./styles";
@@ -5,10 +6,10 @@ import { Container, Title, DefinitionsView, HoverDefinitions } from "./styles";
 interface DefinitionsProps {
     word: string,
     wordInfo: WordInfo,
-    handleDownloadImage: () => void
+    handleExportPptx: () => void
 }
 
-export function Definitions({ word, wordInfo, handleDownloadImage }: DefinitionsProps){
+export function Definitions({ word, wordInfo, handleExportPptx }: DefinitionsProps){
     const [ definitionHover, setDefinitionHover ] = useState('default')
     
     function handleMouseOverDefinition(def: string){
@@ -24,8 +25,9 @@ export function Definitions({ word, wordInfo, handleDownloadImage }: Definitions
             <Title>
                 <h1>{word}</h1>
             
-                <button type="button" onClick={handleDownloadImage} >
+                <button type="button" onClick={handleExportPptx} >
                     Exportar
+                    <MicrosoftPowerpointLogo size={24}/>
                 </button>
             </Title>
 

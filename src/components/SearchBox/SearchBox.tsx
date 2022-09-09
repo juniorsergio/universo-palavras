@@ -1,3 +1,4 @@
+import { MagnifyingGlass } from "phosphor-react";
 import { ChangeEvent, FormEvent, useState } from "react";
 import { Container, Input } from "./styles";
 
@@ -30,10 +31,7 @@ export function SearchBox({ getWordInfo }: SearchBoxProps){
                 onChange={handleWordChange}
             />
             <button type="submit">
-                <img
-                    src="search-icon.svg"
-                    alt="Ícone de busca"
-                />
+                <MagnifyingGlass size={24} />
             </button>
         </Container>
     )

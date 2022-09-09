@@ -27,8 +27,11 @@ export const Title = styled.div`
     justify-content: space-around;
 
     button {
-        border: 1px solid var(--blue-500);
-        background: var(--blue-500);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        background: var(--orange);
 
         padding: 10px 15px;
 
@@ -37,12 +40,13 @@ export const Title = styled.div`
         font-weight: bold;
 
         cursor: pointer;
-        transition: background-color 0.2s;
+        transition: filter 0.2s;
 
         border-radius: 50px;
+        border: none;
 
         &:hover {
-            background: var(--blue-300);
+            filter: brightness(0.8);
         }
     }
 `
@@ -50,6 +54,17 @@ export const Title = styled.div`
 export const DefinitionsView = styled.div`
     display: grid;
     gap: 20px;
+    
+    animation: fadein 1s;
+
+    @keyframes fadein {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
 
     .author {
         font-style: italic;
@@ -65,8 +80,8 @@ export const HoverDefinitions = styled.ul`
     gap: 20px;
 
     li {
-        border: 1px solid var(--blue-500);
-        background: var(--blue-500);
+        border: 1px solid var(--blue-dark);
+        background: var(--blue-dark);
 
         padding: 10px 15px;
 
@@ -79,11 +94,11 @@ export const HoverDefinitions = styled.ul`
         border-radius: 50px;
 
         &:hover {
-            background: var(--blue-300);
+            background: var(--blue-light);
         }
 
         &.active {
-            background: var(--blue-300);
+            background: var(--blue-light);
         }
     }
 `

@@ -18,13 +18,13 @@ export const Container = styled.div`
     }
     
     a {
-        color: var(--blue-300);
+        color: var(--blue-light);
         transition: color 0.2s;
         text-decoration: none;
         cursor: pointer;
 
         &:hover {
-            color: var(--blue-500);
+            color: var(--blue-dark);
         }
     }
 `
