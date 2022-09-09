@@ -68,7 +68,7 @@ export function App(){
                             />
 
                             <Definitions
-                                handleExportPptx={() => exportPptx(printRef, word)}
+                                handleExportPptx={() => exportPptx(printRef.current!, word, wordInfo)}
                                 word={word}
                                 wordInfo={wordInfo}
                             />
