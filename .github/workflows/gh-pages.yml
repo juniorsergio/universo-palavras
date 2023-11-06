@@ -35,4 +35,10 @@ jobs:
         run: npm ci
         
       - name: Deploy to GitHub Pages
-        run: npm run deploy
+        env:
+          MY_EMAIL: ${{ secrets.MY_EMAIL }}
+          MY_NAME: ${{ secrets.MY_NAME }}
+        run: |
+          git config --global user.email $MY_EMAIL
+          git config --global user.name $MY_NAME
+          npm run deploy
