@@ -5,11 +5,6 @@ on:
     branches: ["master"]
   workflow_dispatch:
 
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
 concurrency:
   group: "pages"
   cancel-in-progress: true
@@ -36,9 +31,10 @@ jobs:
         
       - name: Deploy to GitHub Pages
         env:
-          MY_EMAIL: sergio.junior55@hotmail.com
-          MY_NAME: juniorsergio
+          MY_EMAIL: ${{ secrets.MY_EMAIL }}
+          MY_NAME: ${{ secrets.MY_NAME }}
         run: |
           git config --global user.email $MY_EMAIL
           git config --global user.name $MY_NAME
+          git remote set-url origin https://$MY_NAME:${{ secrets.GH_SECRET }}@github.com/$MY_NAME:/universo-palavras.git
           npm run deploy
