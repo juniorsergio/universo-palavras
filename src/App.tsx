@@ -34,7 +34,7 @@ export function App(){
     async function getWordInfo(word: string){
         setIsLoading(true)
 
-        const response = await fetch(`https://word-crawler-api.herokuapp.com/${word}`)
+        const response = await fetch(`https://word-crawler-api.onrender.com/${word}`)
 
         if(response.status === 200){
             const data = await response.json()
