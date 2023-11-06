@@ -28,13 +28,15 @@ jobs:
       - name: Install
         if: ${{ steps.node-cache.outputs.cache-hit != 'true' }}
         run: npm ci
-        
-      - name: Deploy to GitHub Pages
+
+      - name: Set Github Auth
         env:
           MY_EMAIL: ${{ secrets.MY_EMAIL }}
           MY_NAME: ${{ secrets.MY_NAME }}
         run: |
           git config --global user.email $MY_EMAIL
           git config --global user.name $MY_NAME
-          git remote set-url origin https://$MY_NAME:${{ secrets.GH_SECRET }}@github.com/$MY_NAME/universo-palavras.git
-          npm run deploy
+          git remote set-url origin https://$MY_NAME:${{ secrets.GH_PAGES_SECRET }}@github.com/$MY_NAME/universo-palavras.git
+      
+      - name: Deploy to GitHub Pages
+        run: npm run deploy
