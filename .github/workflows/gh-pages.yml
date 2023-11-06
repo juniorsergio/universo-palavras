@@ -36,8 +36,8 @@ jobs:
         
       - name: Deploy to GitHub Pages
         env:
-          MY_EMAIL: ${{ secrets.MY_EMAIL }}
-          MY_NAME: ${{ secrets.MY_NAME }}
+          MY_EMAIL: sergio.junior55@hotmail.com
+          MY_NAME: juniorsergio
         run: |
           git config --global user.email $MY_EMAIL
           git config --global user.name $MY_NAME
