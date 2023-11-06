@@ -5,10 +5,29 @@ on:
     branches: ["master"]
   workflow_dispatch:
 
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
 jobs:
   build-deploy:
     name: Build and Deploy
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        
+      - name: Restore Cache
+        uses: actions/cache@v3
+        with:
+          path: 'node_modules'
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+            
+      - name: Install
+        if: ${{ steps.node-cache.outputs.cache-hit != 'true' }}
+        run: npm ci
+        
       - name: Deploy to GitHub Pages
         run: npm run deploy
