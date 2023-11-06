@@ -36,5 +36,5 @@ jobs:
         run: |
           git config --global user.email $MY_EMAIL
           git config --global user.name $MY_NAME
-          git remote set-url origin https://$MY_NAME:${{ secrets.GH_SECRET }}@github.com/$MY_NAME:/universo-palavras.git
+          git remote set-url origin https://$MY_NAME:${{ secrets.GH_SECRET }}@github.com/$MY_NAME/universo-palavras.git
           npm run deploy
